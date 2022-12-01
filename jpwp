@@ -1,0 +1,44 @@
+ private boolean exitFlag = false;
+ private boolean pauseFlag = false;
+ 
+ /**
+ @Override
+    public String getAppName() {
+        return obron_sie;
+    }
+    */
+    
+@Override
+    public boolean isPaused() {
+        return pauseFlag;
+    }
+
+    public void requestPause(boolean pause) {
+        pauseFlag = pause;
+    }
+public class Main {
+System.out.println("Zasady: \n "
+				+"Witaj uzytkowniku"
+				+ " moze nie wiesz co cie czeka \n ale ja juz wiem"
+				+ "czeka Cie przygoda \n nacisnij enter aby kontynuowac...");
+		scan.nextLine();
+		
+		System.out.println("witaj w menu mego projektu");
+    
+    
+    
+    
+    
+    if(zwierzaczek < 1) {
+				System.out.println("Game over!! wygrales tyle pkt!!");
+				System.out.println("Score: "+score);
+				System.exit(0);
+			} else if(!skipped) {
+				
+				
+				System.out.println("runda nastepna, Score: "+score);
+				usedSize = GameTools.usedList.size();
+				
+			}
+}
+
