@@ -1,0 +1,140 @@
+package jpwp;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.Font;
+import java.io.File;
+import java.io.IOException;
+public class menu implements ActionListener {	    
+	    
+menu()  {
+    JFrame f = new JFrame("Project");
+    f.setSize(1000, 800);
+    f.setResizable(false);
+    JPanel Z = new JPanel();
+    Z.setSize(150, 1024);
+    Z.setLocation(850,0);
+    Z.setLayout(null);
+    Z.setBackground(new Color(255,0,255));
+    JPanel Panel = new JPanel();
+    Panel.setSize(850, 800);
+    Panel.setLocation(0,0);
+    Panel.setFocusable(true);
+    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    JLabel photo = new JLabel(new ImageIcon("../src/images/opener.png"));
+    Panel.add(photo);
+    
+    
+    JTextArea title = new JTextArea();	//1st part
+    String intro = "Obroń Się";
+    title.setText(intro);
+    Font font = new Font("Arial", Font.BOLD, 20);
+    title.setWrapStyleWord(true);
+    title.setEditable(false);
+    title.setFont(font);
+    title.setLineWrap(true);
+    title.setBounds(10, 10, 110, 60);
+    title.setForeground(Color.blue);
+    title.setBackground(new Color(255,0,255));	//end of 1st part
+
+
+    JTextArea ranking = new JTextArea();	//creative side
+    String rank= "Najlepsi: ";
+    ranking.setText(rank);
+    ranking.setLineWrap(true);
+    ranking.setWrapStyleWord(true);
+    ranking.setEditable(true);
+    ranking.setBounds(10, 350, 160, 40);
+    ranking.setForeground(Color.blue);
+    ranking.setBackground(new Color(255,0,255));
+
+    
+    JButton ranked = new JButton("Best of the game:");
+    ranked.setBounds(10,250,120,60);    
+    ranked.setBackground(Color.white);
+    //imagination scoped
+    
+    
+    JTextArea text = new JTextArea();	//buttons up
+    String level = "Wybierz level:";
+    text.setText(level);
+    text.setLineWrap(true);
+    text.setWrapStyleWord(true);
+    text.setEditable(false);
+    text.setBounds(10, 60, 90, 30);
+    text.setForeground(Color.blue);
+    text.setBackground(new Color(255,0,255));
+    JButton First = new JButton("easy");
+    First.setBounds(10,90,70,20);    
+    First.setBackground(Color.white);   
+    JButton Second = new JButton("medium");
+    Second.setBounds(10,130,70,20);    
+    Second.setBackground(Color.white); 
+    JButton Third = new JButton("hard");
+    Third.setBounds(10,180,70,20);    
+    Third.setBackground(Color.white); //buttons down
+    
+    
+ 
+    JTextArea music = new JTextArea();
+    String xmas = "Wanna Music?:";
+    music.setText(xmas);
+    music.setEditable(false);
+    music.setLineWrap(true);
+    music.setWrapStyleWord(true);
+    music.setBounds(10, 450, 120, 40);
+    music.setForeground(Color.blue);
+    music.setBackground(new Color(255,0,255));
+    JButton musicoff = new JButton("Turn off");
+    musicoff.setBounds(10,490,80,30);    
+    musicoff.setBackground(Color.white);
+    JButton musicon = new JButton("Turn on");
+    musicon.setBounds(10,530,80,30);    
+    musicon.setBackground(Color.white);
+    
+    Z.add(title);
+    Z.add(First);
+    Z.add(Second);
+    Z.add(Third);
+    Z.add(text);
+    Z.add(ranking);
+    Z.add(ranked);
+    Z.add(music);
+    Z.add(musicon);
+    Z.add(musicoff);
+ 
+    f.add(Z);
+    f.add(Panel);
+    f.setVisible(true);
+
+    First.addActionListener(this);
+    Second.addActionListener(this);
+    Third.addActionListener(this);
+    ranked.addActionListener(this);
+    musicoff.addActionListener(this);
+    musicon.addActionListener(this);
+   
+    
+  }
+  
+  
+  
+ 
+
+public static void main(String args[])  {
+    new menu();
+  }
+
+
+
+
+
+@Override
+public void actionPerformed(ActionEvent e) {
+	// TODO Auto-generated method stub
+	
+}}
