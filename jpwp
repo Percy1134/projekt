@@ -7,20 +7,12 @@
         return obron_sie;
     }
     */
-    
-@Override
-    public boolean isPaused() {
-        return pauseFlag;
-    }
 
-    public void requestPause(boolean pause) {
-        pauseFlag = pause;
-    }
-public class Main {
-System.out.println("Zasady: \n "
+public class Main {					//przykładowy ekran logowania lub zaproszenia do gry pojawiający się przed menu, z opcjonalną do dodania muzyką
+System.out.println("Zasady: \n "			
 				+"Witaj uzytkowniku"
 				+ " moze nie wiesz co cie czeka \n ale ja juz wiem"
-				+ "czeka Cie przygoda \n nacisnij enter aby kontynuowac...");
+				+ "czeka Cie przygoda \n nacisnij enter aby kontynuowac..."); 
 		scan.nextLine();
 		
 		System.out.println("witaj w menu mego projektu");
@@ -30,7 +22,7 @@ System.out.println("Zasady: \n "
     
     
     if(zwierzaczek < 1) {
-				System.out.println("Game over!! wygrales tyle pkt!!");
+				System.out.println("Game over!! wygrales tyle pkt!!"); 			//wprowadzenie prostych do rozbudowy mechanik, koncept
 				System.out.println("Score: "+score);
 				System.exit(0);
 			} else if(!skipped) {
