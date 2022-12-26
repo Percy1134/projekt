@@ -1,8 +1,0 @@
-public class kolizja {
-dx = obiektA.x - obiektB.x;
-dy = obiektA.y - obiektB.y;
-hitbox = obiektA.strefa + obiektB.strefa;
-if ((dx*dx + dy*dy) < hitbox*hitbox) {      //ewentualnie Math.sqrt dla lewej strony
-  //kolizja
-  }
-}
