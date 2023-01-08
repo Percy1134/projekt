@@ -15,21 +15,26 @@ class Menu extends JFrame {
     JButton latwy;
     JButton sredni;
     JButton trudny;
-    int iloscElementow;
-    Poziom poziom;
+    JButton start;
+    int dlx;
+    int dly;
+    int przesuniecie;
 
     Menu() {
+        this.dlx = 1280;
+        this.dly = 800;
+        this.przesuniecie = 150;
         this.setTitle("Obroń się!");
         this.setResizable(false);
         this.setLayout(null);
-        this.setSize(1280, 1024);
+        this.setSize(this.dlx, this.dly);
         this.tekst = new JPanel();
         this.tekst.setLocation(0, 0);
-        this.tekst.setSize(150, 1024);
-        this.tekst.setBackground(new Color(0,0,255));
-        this.rysowanie = new JRysowanie();
+        this.tekst.setSize(this.przesuniecie, this.dly);
+        this.tekst.setBackground(new Color(128,128,128));
+        this.rysowanie = new JRysowanie(this);
         this.rysowanie.setLocation(150, 0);
-        this.rysowanie.setSize(1280-150, 1024);
+        this.rysowanie.setSize(this.dlx-this.przesuniecie, this.dly);
         this.add(this.tekst);
         this.add(this.rysowanie);
         this.powitanie = new JLabel("Witaj w Obroń się!");
@@ -38,29 +43,31 @@ class Menu extends JFrame {
         this.latwy = new JButton("Łatwy");
         this.sredni = new JButton("Średni");
         this.trudny = new JButton("Trudny");
+        this.start = new JButton("Start");
         this.tekst.add(this.wybierz);
         this.tekst.add(this.latwy);
         this.tekst.add(this.sredni);
         this.tekst.add(this.trudny);
+        this.tekst.add(this.start);
         this.setVisible(true);
-        this.iloscElementow = 2;
-        this.poziom = new Poziom2();
         this.latwy.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                iloscElementow = 3;
-                poziom = new Poziom3();
+                rysowanie.ustawPoziom(1,dlx,dly,przesuniecie);
             }
         });
         this.sredni.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                iloscElementow = 2;
-                poziom = new Poziom2();
+                rysowanie.ustawPoziom(2,dlx,dly,przesuniecie);
             }
         });
         this.trudny.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                iloscElementow = 1;
-                poziom = new Poziom1();
+                rysowanie.ustawPoziom(3,dlx,dly,przesuniecie);
+            }
+        });
+        this.start.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                rysowanie.start();
             }
         });
     }
