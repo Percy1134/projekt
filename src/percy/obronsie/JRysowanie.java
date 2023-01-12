@@ -8,6 +8,9 @@ import java.awt.event.MouseListener;
 import javax.swing.SwingUtilities;
 import java.util.ArrayList;
 import java.awt.Color;
+/*
+ * wprowadza element blokujący - interakcja uzytkownika
+ */
 class JRysowanie extends JPanel {
     Poziom poziom;
     boolean pozwolRysowac;
@@ -15,14 +18,16 @@ class JRysowanie extends JPanel {
     Menu menu;
     int iloscBelek;
     int iloscWzBelek;
+    Watek watek;
     JRysowanie(Menu menu) {
         super();
         this.menu = menu;
+        this.watek = new Watek(this);
         this.poziom = new Poziom();
         this.addMouseListener(new MouseListener() {
             public void mouseClicked(MouseEvent e) {
-                System.out.println(e.getX());
-                System.out.println(e.getY());
+                System.out.println(e.getX());           //lewy przycisk myszy rysowania belek
+                System.out.println(e.getY());           //prawy przycisk myszy rysowania belek
             }
             public void mousePressed(MouseEvent e) {
                 if (poziom.maxIloscBelek == 0) {
@@ -86,6 +91,10 @@ class JRysowanie extends JPanel {
             public void mouseMoved (MouseEvent e) { }
         });
     }
+    
+    /** 
+     * @param g
+     */
     @Override
     public void paint(Graphics g) {
         super.paintComponent(g);
@@ -95,13 +104,19 @@ class JRysowanie extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
         Kulka kulka = new Kulka();
         int iloscKulek = poziom.kulki.length;
-        g2.setColor(new Color(0,255,0));
+        g2.setColor(new Color(10,150,15));
         for (int i = 0; i<iloscKulek; i++) {
+            if (poziom.kulki[i][0] < 0 || poziom.kulki[i][1] < 0) {
+                continue;
+            }
             g2.fillRect(poziom.kulki[i][0], poziom.kulki[i][1], kulka.dlx, kulka.dly);
         }
-        g2.setColor(new Color(255,0,0));
+        g2.setColor(new Color(25,110,220));
         g2.fillRect(poziom.bron[0], poziom.bron[1], 30, 30);
         for (int i = 0; i<belka.size(); i++) {
+            if (belka.get(i).wytrzymalosc < 1) {
+                continue;
+            }
             if (belka.get(i).wytrzymalosc == 1) {
                 g2.setColor(new Color(0,255,0));
             } else {
@@ -112,6 +127,13 @@ class JRysowanie extends JPanel {
             }
         }
     }
+    
+    /** 
+     * @param poz
+     * @param dlx
+     * @param dly
+     * @param przesuniecie
+     */
     void ustawPoziom(int poz, int dlx,int dly,int przesuniecie) {
         switch(poz) {
             case 1:
@@ -129,10 +151,11 @@ class JRysowanie extends JPanel {
         this.belka = new ArrayList<Belka>();
         this.iloscBelek = 0;
         this.iloscWzBelek = 0;
+        this.watek.stop();
         this.repaint();
     }
     void start() {
-        Watek watek = new Watek(this);
-        watek.start();
+        this.watek = new Watek(this);
+        this.watek.start();
     }
 }
