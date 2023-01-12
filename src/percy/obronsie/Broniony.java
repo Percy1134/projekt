@@ -1,5 +1,7 @@
 package percy.obronsie;
-
+/*
+ * wprowadza element broniony przez gracza
+ */
 class Broniony {
     int dlx;
     int dly;
